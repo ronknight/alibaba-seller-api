@@ -20,7 +20,7 @@
   <a href="#usage">Usage</a> •
   <a href="#logging">Logging</a> •
   <a href="#disclaimer">Disclaimer</a> •
-  <a href="#diagram">Diagram</a>
+  <a href="#diagrams">Diagrams</a>
 </p>
 
 ---
