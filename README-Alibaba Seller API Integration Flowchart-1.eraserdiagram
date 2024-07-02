@@ -1,0 +1,54 @@
+flowchart-diagram
+
+title Alibaba Seller API Integration Flowchart
+
+// Grouping the setup process
+Setup [color: lightblue] {
+  Clone Repository [icon: git-branch]
+  Install Packages [icon: package]
+  Create .env File [icon: file-text]
+}
+
+// Grouping the scripts
+Scripts [color: lightgreen] {
+  Initiate OAuth [label: 1initiate.py, icon: key]
+  Create Access Token [label: 2createtoken.py, icon: lock]
+  Retrieve Seller Orders [label: sellerorderlist.py, icon: list]
+  Retrieve Order Details [label: sellerorderget.py, icon: file-text]
+  Retrieve Fund Info [label: sellerorderfundget.py, icon: dollar-sign]
+  Retrieve Logistics Info [label: sellerorderlogisticsget.py, icon: truck]
+  Update Shipping Info [label: sellerordershipping.py, icon: send]
+}
+
+// Start points
+Start Setup [shape: oval, icon: play-circle]
+Start Usage [shape: oval, icon: play-circle]
+
+// Setup process
+Start Setup > Clone Repository
+Clone Repository > Install Packages
+Install Packages > Create .env File
+
+// Usage process
+Start Usage > Initiate OAuth
+Initiate OAuth > Create Access Token
+Create Access Token > Retrieve Seller Orders
+Retrieve Seller Orders > Retrieve Order Details: Needs e_trade_id
+Retrieve Seller Orders > Retrieve Fund Info: Needs e_trade_id
+Retrieve Seller Orders > Retrieve Logistics Info: Needs e_trade_id
+Retrieve Seller Orders > Update Shipping Info: Needs service_provider, trade_id, logistics_type, tracking_number, attachments_json
+
+// Logging
+Logging [shape: oval, icon: file-text] > All Scripts: Logs API requests and responses
+
+// End points
+End Setup [shape: oval, icon: stop-circle]
+End Usage [shape: oval, icon: stop-circle]
+
+// Connections to end points
+Create .env File > End Setup
+Update Shipping Info > End Usage
+Retrieve Logistics Info > End Usage
+Retrieve Fund Info > End Usage
+Retrieve Order Details > End Usage
+
